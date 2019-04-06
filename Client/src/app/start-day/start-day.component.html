@@ -1,1 +1,50 @@
 <app-menu></app-menu>
+<br>
+<br>
+<h1>Set today show</h1>
+<div class="contt">
+  <form class="form-horizontal">
+    <fieldset>
+
+      <!-- Select Multiple -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="selectmultiple">Select Show</label>
+        <div class="col-md-4">
+          <select id="selectmultiple" name="selectmultiple" class="form-control" multiple="multiple">
+            <option value="1">Cinderella</option>
+            <option value="2">Oz wizard</option>
+            <option value="2">Alice</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Multiple Radios -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Hall Configuration</label>
+        <div class="col-md-4">
+          <div class="radio">
+            <label for="radios-0">
+              <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+              4x3 cars
+            </label>
+          </div>
+          <div class="radio">
+            <label for="radios-1">
+              <input type="radio" name="radios" id="radios-1" value="2">
+              14x7 seats
+            </label>
+          </div>
+        </div>
+
+      </div>
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <div class="col-md-8">
+          <button id="button1id" name="button1id" class="btn btn-success">Save</button>
+          <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
