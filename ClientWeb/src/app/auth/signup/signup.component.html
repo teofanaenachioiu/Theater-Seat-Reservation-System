@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="">Alice's Dreams Theater</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/theater/shows">Shows</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/theater/auth">Login</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/theater/auth/signup">Signup</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br><br>
+
+<div class="login-wrap">
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign up</label>
+    <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+    <div class="login-form">
+      <div class="sign-in-htm">
+      <div class="group">
+      <label for="user" class="label">Username</label>
+      <input id="user" type="text" class="input">
+      </div>
+      <div class="group">
+      <label for="pass" class="label">Password</label>
+      <input id="pass" type="password" class="input" data-type="password">
+      </div>
+      <div class="group">
+      <label for="pass" class="label">Password verify</label>
+      <input id="rePass" type="password" class="input" data-type="password">
+      </div>
+      <div class="group">
+        <button class="button" value="Sign Up">Signup</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
