@@ -1,9 +1,11 @@
 package service;
 
+import model.Rezervare;
 import model.Spectacol;
 import model.TipUser;
 import model.User;
 import org.springframework.stereotype.Component;
+import persistence.repository.RezervareRepository;
 import persistence.repository.SpectacolRepository;
 import persistence.repository.UserRepository;
 
@@ -15,12 +17,19 @@ public class MyService {
 
     UserRepository repository;
     SpectacolRepository spectacolRepository;
+    RezervareRepository rezervareRepository;
     private Set<User> loggedClients;
 
-    public MyService(UserRepository repository, SpectacolRepository spectacolRepository) {
+    public MyService(UserRepository repository, SpectacolRepository spectacolRepository,
+                     RezervareRepository rezervareRepository) {
         this.repository=repository;
         this.spectacolRepository = spectacolRepository;
+        this.rezervareRepository = rezervareRepository;
         loggedClients = new TreeSet<>();
+//        this.repository.initialize();
+//        this.repository.save(new User("manager", "parola",TipUser.MANAGER));
+//        this.repository.close();
+
     }
 
     public User[] getAllUsers(){
@@ -30,7 +39,7 @@ public class MyService {
         return users;
     }
 
-    public Spectacol findShow(Integer id){
+    public synchronized Spectacol findShow(Integer id){
         this.spectacolRepository.initialize();
         Spectacol show =this.spectacolRepository.findOne(id);
         this.spectacolRepository.close();
@@ -97,10 +106,7 @@ public class MyService {
         }
     }
 
-    public synchronized void signup(String username, String password, String rePassword) throws MyAppException {
-        if (!password.equals(rePassword)) {
-            throw new MyAppException("Reintroduce password.");
-        }
+    public synchronized User signup(String username, String password) throws MyAppException {
         repository.initialize();
         User user = repository.findOne(username);
         if (user != null) {
@@ -111,12 +117,50 @@ public class MyService {
             String hash = PasswordStorage.createHash(password);
             user = new User(username, hash, TipUser.CLIENT);
             this.repository.save(user);
+            return user;
         } catch (PasswordStorage.CannotPerformOperationException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
-    public synchronized void logout(User user) throws MyAppException {
+    public synchronized void logout(String username) throws MyAppException {
+        repository.initialize();
+        User user = repository.findOne(username);
+        repository.close();
         loggedClients.remove(user);
+    }
+
+
+    public Rezervare addRezervare(Rezervare rezervare) throws MyAppException{
+        this.rezervareRepository.initialize();
+        this.spectacolRepository.initialize();
+        Integer rezervareId =this.rezervareRepository.save(rezervare);
+        this.rezervareRepository.close();
+        this.spectacolRepository.close();
+        if(rezervareId == null) throw  new MyAppException("Reservation can not be added.");
+        rezervare.setID(rezervareId);
+        return rezervare;
+    }
+
+    public Rezervare deleteRezervare(Integer integer){
+        this.rezervareRepository.initialize();
+        Rezervare rezervare= this.rezervareRepository.delete(integer);
+        this.rezervareRepository.close();
+        return rezervare;
+    }
+
+    public Rezervare[] getAllReservations(){
+        this.rezervareRepository.initialize();
+        Rezervare[] rezervares =this.rezervareRepository.findAll();
+        this.rezervareRepository.close();
+        return rezervares;
+    }
+
+    public Rezervare[] getAllReservationsSpectacol(Spectacol spectacol){
+        this.rezervareRepository.initialize();
+        Rezervare[] rezervares =this.rezervareRepository.findAll(spectacol);
+        this.rezervareRepository.close();
+        return rezervares;
     }
 }

@@ -19,5 +19,6 @@
 
         <mapping class="model.User"/>
         <mapping class="model.Spectacol"/>
+        <mapping class="model.Rezervare"/>
     </session-factory>
 </hibernate-configuration>

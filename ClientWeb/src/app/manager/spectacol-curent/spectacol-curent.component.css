@@ -1,0 +1,39 @@
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1,h5{
+
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.list-group-item{
+  width: 90%;
+  margin: auto;
+}
+button{
+  margin: 5px;
+}
+.btn-primary{
+  position: absolute;
+  right: 5%;
+}
+
+img{
+  display: inline;
+  height: 100px;
+  float: left;
+  margin-right: 10px;
+}
+.clearfix {
+  overflow: auto;
+}

@@ -38,17 +38,31 @@ class LoginController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ResponseEntity<String> signup(@RequestBody ObjectNode objectNode) {
+    public ResponseEntity<?> signup(@RequestBody ObjectNode objectNode) {
+        System.out.println("La signup!! ");
         String username = objectNode.get("username").asText();
         String password = objectNode.get("password").asText();
-        String rePassword = objectNode.get("rePassword").asText();
 
         try {
-            loginService.signup(username, password, rePassword);
+            User user= loginService.signup(username, password);
 
-            return new ResponseEntity<>( "User intregistrat.", HttpStatus.OK);
+            return new ResponseEntity<User>( user, HttpStatus.OK);
         } catch (MyAppException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public ResponseEntity<?> logout(@RequestBody ObjectNode objectNode) {
+        System.out.println("Aiciiiiiiiiiiiiiiiiiii");
+        String username = objectNode.get("username").asText();
+
+        try {
+            loginService.logout(username);
+            System.out.println("Am iesit de la " + username);
+            return new ResponseEntity<String>( username, HttpStatus.OK);
+        } catch (MyAppException e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

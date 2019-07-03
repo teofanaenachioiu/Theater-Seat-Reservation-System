@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="">Alice's Dreams Theater</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/client">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/client/tickets">Tickets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/client/reservation">Reserve</a>
+        </li>
+        <li>
+          <a class="nav-link" style="cursor: pointer" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h1>My tickets </h1><br>
+
+<div class="list-group">
+  <div *ngIf="!items">There are no reservations</div>
+  <a *ngFor="let item of items" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+
+      <h5 class="mb-1">{{item.denumire}}</h5>
+      <small class="text-muted" >
+        <button *ngIf="item.data > timpulCurent"  type="button" class="btn btn-warning"
+                (click)="deleteReservation(item.id)">Delete</button></small>
+    </div>
+    <p class="mb-1">Seat number: {{item.nrScaun}}</p>
+    <p class="mb-1">Row: {{item.pozitieX}}</p>
+    <p class="mb-1">Column: {{item.pozitieY}}</p>
+    <p class="mb-1">Price: {{item.pret}}</p>
+    <p class="mb-1">Date: {{item.data}}</p>
+  </a>
+</div>

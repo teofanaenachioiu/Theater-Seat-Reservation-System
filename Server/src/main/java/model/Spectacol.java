@@ -2,12 +2,12 @@ package model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "SPECTACOLE")
@@ -15,13 +15,34 @@ public class Spectacol implements Serializable, HasID<Integer>, Comparable<Spect
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name = "show_id")
     private Integer id;
     private String denumire;
     private String descriere;
 
+    public Set<Rezervare> getRezarvari() {
+        return rezarvari;
+    }
+
+    public void setRezarvari(Set<Rezervare> rezarvari) {
+        this.rezarvari = rezarvari;
+    }
+
+    @OneToMany(mappedBy = "spectacol",
+            cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    private Set<Rezervare> rezarvari;
+
     public Spectacol(String denumire, String descriere) {
         this.denumire = denumire;
         this.descriere = descriere;
+    }
+
+    public void addRezervare(Rezervare rezervare){
+        this.rezarvari.add(rezervare);
+    }
+
+    public void removeRezervare(Rezervare rezervare){
+        this.rezarvari.remove(rezervare);
     }
 
     public Spectacol() {

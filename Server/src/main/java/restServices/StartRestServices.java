@@ -11,7 +11,6 @@ import org.springframework.context.annotation.ComponentScans;
 @SpringBootApplication
 public class StartRestServices {
     public static void main(String[] args) {
-
         SpringApplication.run(StartRestServices.class, args);
     }
 }

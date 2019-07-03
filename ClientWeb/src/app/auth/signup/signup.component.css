@@ -167,3 +167,6 @@ body {
 .foot-lnk{
   text-align:center;
 }
+#errorLabel{
+  text-align: right;
+}

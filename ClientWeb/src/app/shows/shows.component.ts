@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
-import {Spectacol} from './Spectacol';
-import {ShowsService} from './shows.service';
+import {Spectacol} from '../utils/Spectacol';
+import {ShowsService} from '../shows.service';
 
 @Component({
   selector: 'app-shows',

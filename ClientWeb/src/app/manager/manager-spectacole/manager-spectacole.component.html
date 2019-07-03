@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="">Alice's Dreams Theater</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/manager">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/manager/shows">Shows</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/manager/today">Today</a>
+        </li>
+        <li>
+          <a class="nav-link" style="cursor:pointer" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br><br>
+<h1>Current shows <button type="button" class="btn btn-lg btn-primary" (click)="openAdd()">Add</button></h1><br>
+
+<div class="list-group">
+  <div *ngIf="!spectacole">There are no shows</div>
+  <a *ngFor="let item of spectacole" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+
+      <h5 class="mb-1">{{item.denumire}}</h5>
+      <small class="text-muted">
+        <button type="button" class="btn btn-danger" (click)='openDelete(item)'>Delete</button>
+        <button  type="button" class="btn btn-warning" (click)="openUpdate(item)">Edit</button></small>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png">
+    <p class="mb-1">{{item.descriere}}</p>
+  </a>
+</div>
