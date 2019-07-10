@@ -10,3 +10,4 @@ configuratie a salii, precizând pentru fiecare loc pozitia, numarul, pretul si 
 rezervat). Folosind un astfel de terminal, spectatorul îsi poate introduce datele personale, poate
 selecta unul sau mai multe locuri si poate declansa un buton pentru rezervarea lor. După fiecare
 rezervare, toate terminalele vor afisa situația actualizata referitor la ocuparea sălii.</i>
+![ScreenShot](../master/screenshots/main.png)
