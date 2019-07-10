@@ -22,7 +22,7 @@ The server side is build with Spring Boot. I also used:
   <li>SSE (Server Side Event): a server push technology enabling a browser to receive automatic updates from a server via HTTP connection
   </li>
   </ul>
-The client side is build with AnguarJS. I also used Bootstrap to design the components.
+The client side is build with Anguar. I also used Bootstrap to design the components.
 
 <h2>Usage</h2>
 As the name suggests, Theater-Seat-Reservation-System is an application which helps clients to reserve theater tickets.
