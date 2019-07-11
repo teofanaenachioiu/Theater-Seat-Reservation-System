@@ -19,7 +19,7 @@ The server side is build with Spring Boot. I also used:
   </li>
   <li>Hibernate: an object-relational mapping tool 
   </li>
-  <li>SSE (Server Side Event): a server push technology enabling a browser to receive automatic updates from a server via HTTP connection
+  <li>SSE (Server-Sent Events): a server push technology enabling a browser to receive automatic updates from a server via HTTP connection
   </li>
   </ul>
 The client side is build with Anguar. I also used Bootstrap to design the components.
